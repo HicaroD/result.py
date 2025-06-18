@@ -1,4 +1,4 @@
-# Result (Python)
+# result.py
 
 A Python implementation inspired by Rust's `Result<T, E>`, representing
 operations that can either succeed (`Ok`) or fail (`Err`).
