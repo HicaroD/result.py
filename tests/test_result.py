@@ -28,6 +28,26 @@ def test_map_on_ok():
     assert mapped.unwrap() == 20
 
 
+def test_ok_method_on_ok():
+    result = Ok(2)
+    assert result.ok() == 2
+
+
+def test_err_method_on_ok():
+    result = Err(2)
+    assert result.ok() == None
+
+
+def test_ok_method_on_err():
+    result = Ok(2)
+    assert result.err() == None
+
+
+def test_err_method_on_err():
+    result = Err(2)
+    assert result.err() == 2
+
+
 def test_map_on_err():
     result: Result[int, str] = Err("some error")
     mapped = result.map(lambda x: x * 10)

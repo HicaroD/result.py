@@ -86,6 +86,28 @@ class Result(Generic[T, E]):
         # cast if we prefer more explicit type.
         raise Exception(f"Called unwrap on Err: {self.error}")  # type: ignore
 
+    def ok(self) -> T | None:
+        """
+        Return the Ok value or None if Err.
+
+        Returns:
+            The value inside Ok or None.
+        """
+        if self.is_ok():
+            return self.value  # type: ignore
+        return None
+
+    def err(self) -> E | None:
+        """
+        Return the Err value or None if Ok.
+
+        Returns:
+            The error inside Err or None.
+        """
+        if self.is_err():
+            return self.error  # type: ignore
+        return None
+
     def unwrap_or(self, default: T) -> T:
         """
         Return the Ok value or a default if Err.
