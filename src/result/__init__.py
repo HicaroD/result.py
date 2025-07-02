@@ -5,7 +5,15 @@ T = TypeVar("T")  # Success type
 E = TypeVar("E")  # Error type
 U = TypeVar("U")  # Output type for map
 F = TypeVar("F")  # Output type for map_err
-G = TypeVar("G")  # Output type for is_err
+
+
+class BaseError(Exception):
+    """Base class used on failures (`Err`)."""
+
+    pass
+
+
+G = TypeVar("G", bound=BaseError)  # Output type for is_err
 
 
 class Result(Generic[T, E]):

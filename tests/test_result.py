@@ -3,7 +3,7 @@ from typing import Any
 import threading
 from dataclasses import FrozenInstanceError
 
-from src.result import Result, Ok, Err
+from src.result import BaseError, Result, Ok, Err
 
 
 def test_ok_and_err_instantiation():
@@ -197,7 +197,7 @@ def test_and_then_propagates_exception():
 
 
 def test_err_is_with_ok():
-    class MyError(Exception):
+    class MyError(BaseError):
         pass
 
     result = Ok(10)
@@ -205,7 +205,7 @@ def test_err_is_with_ok():
 
 
 def test_err_is_with_err():
-    class MyError(Exception):
+    class MyError(BaseError):
         pass
 
     err = Err(MyError("boom"))
