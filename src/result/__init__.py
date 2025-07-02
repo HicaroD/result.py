@@ -5,6 +5,7 @@ T = TypeVar("T")  # Success type
 E = TypeVar("E")  # Error type
 U = TypeVar("U")  # Output type for map
 F = TypeVar("F")  # Output type for map_err
+G = TypeVar("G")  # Output type for is_err
 
 
 class Result(Generic[T, E]):
@@ -122,20 +123,20 @@ class Result(Generic[T, E]):
             return self.value  # type: ignore
         return default
 
-    def err_is(self, e: Type[E]) -> E | None:
+    def err_is(self, g: Type[G]) -> G | None:
         """
-        Return the error if the result is Err and the error is the same type as e.
+        Return the error if the result is Err and the error is the same type as g.
 
         Args:
-            e: The error type to compare.
+            g: The error type to compare.
 
         Returns:
-            The error if the result is Err and the error is the same type as e, else None.
+            The error if the result is Err and the error is the same type as g, else None.
         """
         if self.is_err():
             err = self.error  # type: ignore
-            if isinstance(err, e):
-                return err  # tipo E
+            if isinstance(err, g):
+                return err  # tipo G
         return None
 
 
