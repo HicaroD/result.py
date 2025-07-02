@@ -196,6 +196,24 @@ def test_and_then_propagates_exception():
         result.and_then(f)
 
 
+def test_err_is_with_ok():
+    class MyError(Exception):
+        pass
+
+    result = Ok(10)
+    assert result.err_is(MyError) is None
+
+
+def test_err_is_with_err():
+    class MyError(Exception):
+        pass
+
+    err = Err(MyError("boom"))
+    res = err.err_is(MyError)
+    assert res is not None
+    assert res.args[0] == "boom"
+
+
 def test_thread_safe_read_access():
     ok = Ok(42)
     err = Err("fail")

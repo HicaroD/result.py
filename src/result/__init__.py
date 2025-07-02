@@ -1,4 +1,4 @@
-from typing import Callable, Generic, TypeVar
+from typing import Callable, Generic, TypeVar, Type
 import dataclasses
 
 T = TypeVar("T")  # Success type
@@ -121,6 +121,22 @@ class Result(Generic[T, E]):
         if self.is_ok():
             return self.value  # type: ignore
         return default
+
+    def err_is(self, e: Type[E]) -> E | None:
+        """
+        Return the error if the result is Err and the error is the same type as e.
+
+        Args:
+            e: The error type to compare.
+
+        Returns:
+            The error if the result is Err and the error is the same type as e, else None.
+        """
+        if self.is_err():
+            err = self.error  # type: ignore
+            if isinstance(err, e):
+                return err  # tipo E
+        return None
 
 
 @dataclasses.dataclass(frozen=True)
