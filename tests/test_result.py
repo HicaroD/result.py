@@ -250,3 +250,22 @@ def test_err_is_immutable():
     err = Err("fail")
     with pytest.raises(FrozenInstanceError):
         err.error = "other"  # type: ignore
+
+
+def test_if_let_err_pattern():
+    class MyError(BaseError):
+        pass
+
+    e = Err(MyError())
+
+    if err := e.err_is(MyError):
+        assert err is not None
+        assert isinstance(err, MyError)
+
+
+def test_if_let_ok_pattern():
+    ok: Result[int, str] = Ok(42)
+
+    if o := ok.ok():
+        assert o is not None
+        assert o == 42

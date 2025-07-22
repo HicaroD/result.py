@@ -32,6 +32,30 @@ else:
     print("Error:", result)  # or result.unwrap_or(0)
 ```
 
+## Patterns
+
+### If-let
+
+```rust
+fn divide(a: i32, b: i32) -> Result<f32, String> {
+    if b == 0 {
+        Err("division by zero".to_string())
+    } else {
+        Ok(a as f32 / b as f32)
+    }
+}
+
+let result = divide(10, 2);
+
+if let Ok(value) = result {
+    println!("Success: {}", value);
+}
+```
+
+```python
+
+```
+
 ## Testing
 
 Tests are written using pytest.
