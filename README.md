@@ -6,7 +6,7 @@ operations that can either succeed (`Ok`) or fail (`Err`).
 ## Installation
 
 ```bash
-$ poetry add "git+https://github.com/HicaroD/result.py"
+$ pip install pytresult
 ```
 
 ## Motivation
