@@ -36,69 +36,77 @@ else:
 
 ### `if let Ok(...) { }`
 
-```rust
-fn divide(a: i32, b: i32) -> Result<f32, String> {
-    if b == 0 {
-        Err("division by zero".to_string())
-    } else {
-        Ok(a as f32 / b as f32)
-    }
-}
+- Rust
 
-let result = divide(10, 2);
+  ```rust
+  fn divide(a: i32, b: i32) -> Result<f32, String> {
+      if b == 0 {
+          Err("division by zero".to_string())
+      } else {
+          Ok(a as f32 / b as f32)
+      }
+  }
 
-if let Ok(value) = result {
-    println!("Success: {}", value);
-}
-```
+  let result = divide(10, 2);
 
-```python
-from result import Result, Ok, Err
+  if let Ok(value) = result {
+      println!("Success: {}", value);
+  }
+  ```
 
-def divide(a: int, b: int) -> Result[int, str]:
-    if b == 0:
-        return Err("division by zero")
-    return Ok(a // b)
+- Python
 
-result = divide(10, 2)
+  ```python
+  from result import Result, Ok, Err
 
-if r := result.ok():
-    assert r is not None
-    assert r == 5
-```
+  def divide(a: int, b: int) -> Result[int, str]:
+      if b == 0:
+          return Err("division by zero")
+      return Ok(a // b)
+
+  result = divide(10, 2)
+
+  if r := result.ok():
+      assert r is not None
+      assert r == 5
+  ```
 
 ### `if let Err(...) { }`
 
-```rust
-fn divide(a: i32, b: i32) -> Result<f32, String> {
-    if b == 0 {
-        Err("division by zero".to_string())
-    } else {
-        Ok(a as f32 / b as f32)
-    }
-}
+- Rust
 
-let result = divide(10, 0);
+  ```rust
+  fn divide(a: i32, b: i32) -> Result<f32, String> {
+      if b == 0 {
+          Err("division by zero".to_string())
+      } else {
+          Ok(a as f32 / b as f32)
+      }
+  }
 
-if let Err(error) = result {
-    println!("Error: {}", error);
-}
-```
+  let result = divide(10, 0);
 
-```python
-from result import Result, Ok, Err
+  if let Err(error) = result {
+      println!("Error: {}", error);
+  }
+  ```
 
-def divide(a: int, b: int) -> Result[int, str]:
-    if b == 0:
-        return Err("division by zero")
-    return Ok(a // b)
+- Python
 
-result = divide(10, 0)
+  ```python
+  from result import Result, Ok, Err
 
-if e := result.err():
-    assert e is not None
-    assert e == "division by zero"
-```
+  def divide(a: int, b: int) -> Result[int, str]:
+      if b == 0:
+          return Err("division by zero")
+      return Ok(a // b)
+
+  result = divide(10, 0)
+
+  if e := result.err():
+      assert e is not None
+      assert e == "division by zero"
+  ```
 
 ## Testing
 
