@@ -1,9 +1,9 @@
 [project]
-name = "result"
-version = "0.1.0"
+name = "pytresult"
+version = "1.0.0"
 description = ""
 authors = [
-    {name = "Viventio",email = "viventio.software@gmail.com"}
+    {name = "Hícaro Dânrlley",email = "hdanrlley1@gmail.com"},
 ]
 readme = "README.md"
 requires-python = ">=3.12"

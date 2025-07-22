@@ -1,12 +1,11 @@
-name: Checks
+name: Publish to PyPI
 
 on:
   push:
     branches: [master]
-  pull_request:
 
 jobs:
-  test:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,10 +22,14 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      - name: Install dependencies
+      - name: Configure Poetry for PyPI
         run: |
-          poetry install
+          poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
 
-      - name: Run tests with pytest
+      - name: Install dependencies (optional)
         run: |
-          poetry run pytest
+          poetry install --no-root
+
+      - name: Build and publish
+        run: |
+          poetry publish --build
