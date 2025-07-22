@@ -1,5 +1,6 @@
 ![pypi](https://img.shields.io/pypi/v/pytresult)
 ![precommit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)
+![mypy](https://img.shields.io/badge/type--checked-mypy-blue?style=flat-square&logo=python)
 
 # result.py
 
