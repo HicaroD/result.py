@@ -16,6 +16,7 @@ pytest = "^8.3.5"
 black = "^25.1.0"
 mypy = "^1.17.0"
 pre-commit = "^4.2.0"
+pytest-cov = "^6.2.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
