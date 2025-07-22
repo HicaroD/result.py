@@ -266,6 +266,21 @@ def test_if_let_err_pattern():
 def test_if_let_ok_pattern():
     ok: Result[int, str] = Ok(42)
 
+    assert ok.is_ok()
     if o := ok.ok():
         assert o is not None
         assert o == 42
+
+
+def test_if_let_err_pattern_with_none_division():
+    def divide(a: int, b: int) -> Result[int, str]:
+        if b == 0:
+            return Err("division by zero")
+        return Ok(a // b)
+
+    result = divide(10, 0)
+    assert result.is_err()
+
+    if e := result.err():
+        assert e is not None
+        assert e == "division by zero"
