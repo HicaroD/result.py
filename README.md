@@ -9,6 +9,10 @@ operations that can either succeed (`Ok`) or fail (`Err`).
 $ pip install pytresult
 ```
 
+## Key Features
+
+- Typed
+
 ## Motivation
 
 Using Result helps avoid excessive exception handling and promotes more

@@ -1,0 +1,64 @@
+repos:
+  # 1) Generic hooks (remove trailing whitespace, ensure newline at end, check YAML/JSON, etc)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  # 2) Code formatting with Black
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+        language_version: python3
+
+  # 3) Import organization with isort
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+
+  # 4) Linter Flake8 with plugins for best practices
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.1.0
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-bugbear
+          - flake8-comprehensions
+          - flake8-docstrings
+
+  # 5) Type checking with mypy
+  - repo: local
+    hooks:
+      - id: mypy
+        name: Run mypy
+        entry: poetry run mypy --show-error-codes --ignore-missing-imports src/
+        language: system
+        pass_filenames: false
+
+  # 6) Dependency security checking
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.4.2
+    hooks:
+      - id: python-safety-dependencies-check
+
+  # 7) Static security analysis with Bandit
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.8.3
+    hooks:
+      - id: bandit
+        args: ["-lll"]
+
+  # 8) Automatic tests with pytest
+  - repo: local
+    hooks:
+      - id: pytest
+        name: Run pytest
+        entry: poetry run pytest
+        language: system
+        pass_filenames: false
