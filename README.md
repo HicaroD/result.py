@@ -1,3 +1,7 @@
+![pypi](https://img.shields.io/pypi/v/pytresult)
+![precommit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)
+![mypy](https://img.shields.io/badge/type--checked-mypy-blue?style=flat-square&logo=python)
+
 # result.py
 
 A Python implementation inspired by Rust's `Result<T, E>`, representing
@@ -8,6 +12,16 @@ operations that can either succeed (`Ok`) or fail (`Err`).
 ```bash
 $ pip install pytresult
 ```
+
+## Key Features
+
+- 100% Typed: Works flawlessly with `mypy` — zero type errors, guaranteed.
+
+- Well Tested: Solid 100% test coverage with `pytest` so you can trust it.
+
+- No Dependencies: Just install and go — nothing else required.
+
+- Rust-Style: Clean, explicit error handling inspired by Rust’s Result.
 
 ## Motivation
 
